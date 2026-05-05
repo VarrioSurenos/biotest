@@ -671,8 +671,8 @@ function createScheduleItemHtml(item, config) {
     `;
 }
 
-function formatUtcRangeToLocal(utcStart, utcEnd)
-// Create date objects for today at those UTC times
+function formatUtcRangeToLocal(utcStart, utcEnd) {
+  // Create date objects for today at those UTC times
   const d1 = new Date();
   const [h1, m1] = utcStart.split(':');
   d1.setUTCHours(h1, m1, 0, 0);
