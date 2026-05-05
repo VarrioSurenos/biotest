@@ -43,7 +43,7 @@ const CONFIG = {
     {
       "text": "Email Me!",
       "subtitle": "Plutonium@fbi.one",
-      "url": "mailt o:plutonium@fbi.one",
+      "url": "mailto:plutonium@fbi.one",
       "icon": "assets/images/t.jpg"
     },
     // Example of a custom link type that handles "copy on click"
