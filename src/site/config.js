@@ -6,7 +6,7 @@ const CONFIG = {
   // ---------------------------------------------------------------------------
   // 1. SITE IDENTITY
   // ---------------------------------------------------------------------------
-  "pageTitle": "StarryBio v2.0",
+  "pageTitle": "Pluto's Bio v1.0",
 
   // Favicon: Path to your favicon (e.g., "assets/images/favicon.png")
   // Supports: ico, png, svg, jpg, webp, gif
@@ -44,7 +44,7 @@ const CONFIG = {
       "text": "Email Me!",
       "subtitle": "Plutonium@fbi.one",
       "url": "mailt o:plutonium@fbi.one",
-      "icon": "t.jpg"
+      "icon": "assets/images/t.jpg"
     },
     // Example of a custom link type that handles "copy on click"
     {
@@ -68,8 +68,8 @@ const CONFIG = {
     "ownerTimeZone": "America/New_York", 
 
     "default": {
-      "text": "Offline",
-      "color": "#6B7280", // Gray
+      "text": "Offline Or Late Night Modding",
+      "color": "#0853e9", // Gray
       "icon": "M20 12h-2v2h2v-2zm-4 0h-2v2h2v-2zm-4 0H8v2h4v-2zm-4 0H4v2h4v-2z" // Example 'sleep' or offline icon
     },
 
@@ -88,7 +88,7 @@ const CONFIG = {
         "message": "Focused on work. Replies slow."
       },
       "sleeping": {
-        "text": "Sleeping",
+        "text": "Sleeping Or Smoking a pack on a walk.",
         "color": "#6d7684", // Gray
         "icon": "assets/images/idle.webp", // Using idle for sleeping/offline typically
         "message": "Dreaming of electric sheep."
