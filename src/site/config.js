@@ -111,7 +111,6 @@ const CONFIG = {
   { "status": "available","days": "weekends", "start": "07:00", "end": "00:00" },
   { "status": "Away",     "days": "weekends", "start": "04:00", "end": "13:00" }
 ]
-    ]
   },
 
   "announcement": {
