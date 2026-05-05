@@ -37,7 +37,6 @@ function setupAnimations() {
 
     const color = starColors[Math.floor(Math.random() * starColors.length)];
     const size = Math.random() * 2 + 0.5;
-    const opacity = Math.random() * 0.5 + 0.3;
 
     star.style.width = size + 'px';
     star.style.height = size + 'px';
@@ -128,19 +127,9 @@ function setupAnimations() {
   animate();
 }
 
-// --- DATA LOADING ---
-document.addEventListener('DOMContentLoaded', () => {
-  setupAnimations();
+// --- STATUS INDICATOR AND SCHEDULING LOGIC ---
 
-  if (typeof CONFIG !== 'undefined') {
-    populatePage(CONFIG);
-    document.body.style.opacity = '1';
-  } else {
-    document.body.style.opacity = '1';
-  }
-});
-
-// --- STATUS FIX (ONLY PART CHANGED) ---
+// ✅ FIXED (uses PST instead of UTC)
 function determineCurrentStatus(config) {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Los_Angeles",
@@ -185,7 +174,12 @@ function determineCurrentStatus(config) {
   return 'default';
 }
 
-// --- DISPLAY FIX ---
+function parseTime(timeStr) {
+  const [h, m] = timeStr.split(':').map(Number);
+  return h * 60 + m;
+}
+
+// ✅ FIXED display (no UTC conversion anymore)
 function formatUtcRangeToLocal(start, end) {
   function format(t) {
     let [h, m] = t.split(':').map(Number);
@@ -194,9 +188,4 @@ function formatUtcRangeToLocal(start, end) {
     return `${h}:${m.toString().padStart(2, '0')} ${ampm}`;
   }
   return `${format(start)} - ${format(end)}`;
-}
-
-function parseTime(timeStr) {
-  const [h, m] = timeStr.split(':').map(Number);
-  return h * 60 + m;
 }
