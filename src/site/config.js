@@ -104,11 +104,11 @@ const CONFIG = {
     // Schedule **IN UTC**
     // Days: "weekdays", "weekends", or "daily"
     "schedule": [
-  { "status": "sleeping", "days": "daily",    "start": "17:00", "end": "13:00" }, 
-  { "status": "busy",     "days": "weekdays", "start": "13:00", "end": "17:00" },
+  { "status": "sleeping", "days": "daily",    "start": "05:00", "end": "13:00" }, 
+  { "status": "busy",     "days": "weekdays", "start": "13:00", "end": "05:00" },
   { "status": "available","days": "weekdays", "start": "21:00", "end": "23:00" },
-  { "status": "available","days": "weekends", "start": "19:00", "end": "00:00" },
-  { "status": "Away",     "days": "daily",    "start": "17:00", "end": "13:00" }
+  { "status": "available","days": "weekends", "start": "07:00", "end": "00:00" },
+  { "status": "Away",     "days": "daily",    "start": "05:00", "end": "13:00" }
     ]
   },
 
