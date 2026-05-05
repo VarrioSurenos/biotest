@@ -6,7 +6,7 @@ const CONFIG = {
   // ---------------------------------------------------------------------------
   // 1. SITE IDENTITY
   // ---------------------------------------------------------------------------
-  "pageTitle": "StarryBio v2.0",
+  "pageTitle": "Pluto's Bio v1.0",
 
   // Favicon: Path to your favicon (e.g., "assets/images/favicon.png")
   // Supports: ico, png, svg, jpg, webp, gif
