@@ -562,25 +562,29 @@ function createStatusHtml(config) {
 
 // Check current time against schedule (All calculations in UTC)
 function determineCurrentStatus(config) {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Los_Angeles",
-    hour12: false,
-    weekday: "short",
-    hour: "2-digit",
-    minute: "2-digit"
-  }).formatToParts(new Date());
+  const now = new Date();
+const parts = new Intl.DateTimeFormat("en-US", {
+  timeZone: "America/Los_Angeles",
+  hour12: false,
+  weekday: "short",
+  hour: "2-digit",
+  minute: "2-digit"
+}).formatToParts(now);
 
-  const hour = parseInt(parts.find(p => p.type === "hour").value);
-  const minute = parseInt(parts.find(p => p.type === "minute").value);
-  const weekdayStr = parts.find(p => p.type === "weekday").value;
+const hour = parseInt(parts.find(p => p.type === "hour").value);
+const minute = parseInt(parts.find(p => p.type === "minute").value);
+const weekdayStr = parts.find(p => p.type === "weekday").value;
 
-  const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-  const day = dayMap[weekdayStr];
+const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
 
-  const currentMinutes = hour * 60 + minute;
-  const isWeekend = day === 0 || day === 6;
+const utcDay = dayMap[weekdayStr];
+const currentUtcMinutes = hour * 60 + minute;
 
+  const isWeekend = utcDay === 0 || utcDay === 6;
+
+  // Find matching schedule item
   for (const item of config.schedule) {
+    // Does this item apply to today?
     let applies = false;
     if (item.days === 'daily') applies = true;
     if (item.days === 'weekends' && isWeekend) applies = true;
@@ -588,15 +592,19 @@ function determineCurrentStatus(config) {
 
     if (!applies) continue;
 
+    // Parse Start/End (HH:MM) to minutes
     const startMins = parseTime(item.start);
     const endMins = parseTime(item.end);
 
+    // Handle wrap-around (e.g. 21:00 to 05:00)
     if (startMins > endMins) {
-      if (currentMinutes >= startMins || currentMinutes < endMins) {
+      // range crosses midnight
+      if (currentUtcMinutes >= startMins || currentUtcMinutes < endMins) {
         return item.status;
       }
     } else {
-      if (currentMinutes >= startMins && currentMinutes < endMins) {
+      // standard range
+      if (currentUtcMinutes >= startMins && currentUtcMinutes < endMins) {
         return item.status;
       }
     }
@@ -663,14 +671,17 @@ function createScheduleItemHtml(item, config) {
     `;
 }
 
-function formatUtcRangeToLocal(start, end) {
-  function format(t) {
-    let [h, m] = t.split(':').map(Number);
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12 || 12;
-    return ${h}:${m.toString().padStart(2, '0')} ${ampm};
-  }
-  return `${format(start)} - ${format(end)}`;
-};
+function formatUtcRangeToLocal(utcStart, utcEnd) {
+  // Create date objects for today at those UTC times
+  const d1 = new Date();
+  const [h1, m1] = utcStart.split(':');
+  d1.setUTCHours(h1, m1, 0, 0);
+
+  const d2 = new Date();
+  const [h2, m2] = utcEnd.split(':');
+  d2.setUTCHours(h2, m2, 0, 0);
+
+  // Format to local string
+  const timeOpt = { hour: 'numeric', minute: '2-digit', hour12: true };
   return `${d1.toLocaleTimeString([], timeOpt)} - ${d2.toLocaleTimeString([], timeOpt)}`;
 }
