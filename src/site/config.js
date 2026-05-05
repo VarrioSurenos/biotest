@@ -107,8 +107,8 @@ const CONFIG = {
       { "status": "sleeping", "days": "daily",    "start": "10:00", "end": "06:00" }, 
       { "status": "busy",     "days": "weekdays", "start": "06:00", "end": "10:00" },
       { "status": "available","days": "weekdays", "start": "14:00", "end": "16:00" }, // Wrap around midnight works
-      { "status": "available","days": "weekends", "start": "12:00", "end": "17:00" }
-      { "status": "Away", "days": "daily",    "start": "10:00", "end": "06:00" }, 
+      { "status": "available","days": "weekends", "start": "12:00", "end": "17:00" },
+      { "status": "Away", "days": "daily",    "start": "10:00", "end": "06:00" }
     ]
   },
 
