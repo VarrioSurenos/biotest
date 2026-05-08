@@ -67,11 +67,9 @@ const CONFIG = {
     "shuffle": false,
 
     // Replace these with your Discord CDN MP3 links
-    "tracks": [
-      "https://cdn.discordapp.com/attachments/1501069438454075475/1502160176164245594/Vance_Joy_-_Riptide_Official_Video_2.mp3?ex=69feb32e&is=69fd61ae&hm=1f83df7110d31887bb6e013759c507957b706395ab5be7dae56f8631040395d4&",
-      "https://cdn.discordapp.com/attachments/SONG2.mp3",
-      "https://cdn.discordapp.com/attachments/SONG3.mp3"
-    ]
+"tracks": [
+  "https://cdn.discordapp.com/attachments/1501069438454075475/1502160176164245594/Vance_Joy_-_Riptide_Official_Video_2.mp3?ex=69feb32e&is=69fd61ae&hm=1f83df7110d31887bb6e013759c507957b706395ab5be7dae56f8631040395d4&"
+]
   },
 
   // ---------------------------------------------------------------------------
