@@ -70,7 +70,9 @@ const CONFIG = {
 "tracks": [
   "https://cdn.discordapp.com/attachments/1501069438454075475/1502160176164245594/Vance_Joy_-_Riptide_Official_Video_2.mp3?ex=69feb32e&is=69fd61ae&hm=1f83df7110d31887bb6e013759c507957b706395ab5be7dae56f8631040395d4&",
   
-  "https://cdn.discordapp.com/attachments/1501069438454075475/1502253021600415754/Bag_Chasin_feat._Lil_Nate.mp3?ex=69ff09a6&is=69fdb826&hm=6b3314e076abb9d7afa8d1cbc54b18bd4c6480b7d9fcb2b54d541ca197455208&"
+  "https://cdn.discordapp.com/attachments/1501069438454075475/1502253021600415754/Bag_Chasin_feat._Lil_Nate.mp3?ex=69ff09a6&is=69fdb826&hm=6b3314e076abb9d7afa8d1cbc54b18bd4c6480b7d9fcb2b54d541ca197455208&",
+
+  "https://cdn.discordapp.com/attachments/1501069438454075475/1502261745660465226/The_Neighbourhood_-_Sweater_Weather_Lyrics.mp3?ex=69ff11c6&is=69fdc046&hm=0442ff008ecff8d2530655166979f31595ef391cfaeb8a32204c479281b52926&"
 ]
   },
 
