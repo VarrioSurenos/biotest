@@ -678,53 +678,32 @@ function formatUtcRangeToLocal(utcStart, utcEnd) {
 }
 
 
-// =============================================================================
-// MUSIC PLAYER
-// =============================================================================
-
-
 
 // =============================================================================
 // MUSIC PLAYER
 // =============================================================================
 
 function initMusicPlayer(musicConfig) {
-  if (!musicConfig.tracks?.length) return;
+  if (!musicConfig.tracks || !musicConfig.tracks.length) return;
 
-  const audio = new Audio();
+  const audio = document.createElement("audio");
 
-  audio.crossOrigin = "anonymous";
-  audio.volume = musicConfig.volume ?? 0.35;
+  audio.volume = musicConfig.volume || 0.35;
+  audio.autoplay = false;
   audio.loop = false;
-  audio.preload = "none";
+  audio.controls = false;
 
   let currentTrack = 0;
-  let tracks = [...musicConfig.tracks];
-
-  if (musicConfig.shuffle) {
-    tracks.sort(() => Math.random() - 0.5);
-  }
+  const tracks = musicConfig.tracks.filter(Boolean);
 
   function playTrack(index) {
     audio.src = tracks[index];
 
-    audio.load();
-
-    const playPromise = audio.play();
-
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        const unlockAudio = () => {
-          audio.play();
-
-          document.removeEventListener("click", unlockAudio);
-          document.removeEventListener("keydown", unlockAudio);
-        };
-
-        document.addEventListener("click", unlockAudio);
-        document.addEventListener("keydown", unlockAudio);
-      });
-    }
+    audio.play().then(() => {
+      console.log("Music playing");
+    }).catch((err) => {
+      console.error("Audio play failed:", err);
+    });
   }
 
   audio.addEventListener("ended", () => {
@@ -737,5 +716,31 @@ function initMusicPlayer(musicConfig) {
     playTrack(currentTrack);
   });
 
-  playTrack(currentTrack);
+  document.body.appendChild(audio);
+
+  // BIG PLAY BUTTON
+  const overlay = document.createElement("div");
+
+  overlay.innerHTML = "CLICK TO START MUSIC";
+
+  overlay.style.position = "fixed";
+  overlay.style.inset = "0";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.background = "rgba(0,0,0,0.65)";
+  overlay.style.backdropFilter = "blur(6px)";
+  overlay.style.zIndex = "999999";
+  overlay.style.color = "white";
+  overlay.style.fontSize = "32px";
+  overlay.style.fontWeight = "bold";
+  overlay.style.cursor = "pointer";
+  overlay.style.userSelect = "none";
+
+  overlay.addEventListener("click", () => {
+    playTrack(currentTrack);
+    overlay.remove();
+  });
+
+  document.body.appendChild(overlay);
 }
