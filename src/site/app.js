@@ -183,6 +183,11 @@ function populatePage(data) {
 
   populateProfile(data.profile);
   populateLinks(data.links);
+
+  if (data.music?.enabled) {
+    initMusicPlayer(data.music);
+  }
+
   populateFooter(data.footer);
 
   if (data.status?.enabled) {
@@ -670,4 +675,57 @@ function formatUtcRangeToLocal(utcStart, utcEnd) {
   // Format to local string
   const timeOpt = { hour: 'numeric', minute: '2-digit', hour12: true };
   return `${d1.toLocaleTimeString([], timeOpt)} - ${d2.toLocaleTimeString([], timeOpt)}`;
+}
+
+
+// =============================================================================
+// MUSIC PLAYER
+// =============================================================================
+
+function initMusicPlayer(musicConfig) {
+  if (!musicConfig.tracks || !musicConfig.tracks.length) return;
+
+  const audio = document.createElement('audio');
+
+  audio.id = 'background-music-player';
+  audio.volume = musicConfig.volume ?? 0.35;
+  audio.preload = 'auto';
+
+  let currentTrack = 0;
+  let tracks = [...musicConfig.tracks];
+
+  if (musicConfig.shuffle) {
+    tracks.sort(() => Math.random() - 0.5);
+  }
+
+  function playTrack(index) {
+    audio.src = tracks[index];
+
+    audio.play().catch(() => {
+      console.log('Autoplay blocked until interaction');
+
+      const startPlayback = () => {
+        audio.play();
+        document.removeEventListener('click', startPlayback);
+      };
+
+      document.addEventListener('click', startPlayback);
+    });
+  }
+
+  audio.addEventListener('ended', () => {
+    currentTrack++;
+
+    if (currentTrack >= tracks.length) {
+      currentTrack = 0;
+    }
+
+    playTrack(currentTrack);
+  });
+
+  document.body.appendChild(audio);
+
+  if (musicConfig.autoplay) {
+    playTrack(currentTrack);
+  }
 }
