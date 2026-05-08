@@ -682,14 +682,21 @@ function formatUtcRangeToLocal(utcStart, utcEnd) {
 // MUSIC PLAYER
 // =============================================================================
 
+
+
+// =============================================================================
+// MUSIC PLAYER
+// =============================================================================
+
 function initMusicPlayer(musicConfig) {
-  if (!musicConfig.tracks || !musicConfig.tracks.length) return;
+  if (!musicConfig.tracks?.length) return;
 
-  const audio = document.createElement('audio');
+  const audio = new Audio();
 
-  audio.id = 'background-music-player';
+  audio.crossOrigin = "anonymous";
   audio.volume = musicConfig.volume ?? 0.35;
-  audio.preload = 'auto';
+  audio.loop = false;
+  audio.preload = "none";
 
   let currentTrack = 0;
   let tracks = [...musicConfig.tracks];
@@ -701,19 +708,26 @@ function initMusicPlayer(musicConfig) {
   function playTrack(index) {
     audio.src = tracks[index];
 
-    audio.play().catch(() => {
-      console.log('Autoplay blocked until interaction');
+    audio.load();
 
-      const startPlayback = () => {
-        audio.play();
-        document.removeEventListener('click', startPlayback);
-      };
+    const playPromise = audio.play();
 
-      document.addEventListener('click', startPlayback);
-    });
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        const unlockAudio = () => {
+          audio.play();
+
+          document.removeEventListener("click", unlockAudio);
+          document.removeEventListener("keydown", unlockAudio);
+        };
+
+        document.addEventListener("click", unlockAudio);
+        document.addEventListener("keydown", unlockAudio);
+      });
+    }
   }
 
-  audio.addEventListener('ended', () => {
+  audio.addEventListener("ended", () => {
     currentTrack++;
 
     if (currentTrack >= tracks.length) {
@@ -723,9 +737,5 @@ function initMusicPlayer(musicConfig) {
     playTrack(currentTrack);
   });
 
-  document.body.appendChild(audio);
-
-  if (musicConfig.autoplay) {
-    playTrack(currentTrack);
-  }
+  playTrack(currentTrack);
 }
