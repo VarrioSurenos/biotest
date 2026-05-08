@@ -68,7 +68,7 @@ const CONFIG = {
 
     // Replace these with your Discord CDN MP3 links
     "tracks": [
-      "https://cdn.discordapp.com/attachments/1501069438454075475/1502158162059595796/Vance_Joy_-_Riptide_Official_Video.mp3?ex=69feb14e&is=69fd5fce&hm=c7249d7548b2d861b6254602cecb8282d7cc4a197956853833b7e74729454923&",
+      "https://cdn.discordapp.com/attachments/1501069438454075475/1502160176164245594/Vance_Joy_-_Riptide_Official_Video_2.mp3?ex=69feb32e&is=69fd61ae&hm=1f83df7110d31887bb6e013759c507957b706395ab5be7dae56f8631040395d4&",
       "https://cdn.discordapp.com/attachments/SONG2.mp3",
       "https://cdn.discordapp.com/attachments/SONG3.mp3"
     ]
