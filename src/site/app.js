@@ -721,7 +721,7 @@ function initMusicPlayer(musicConfig) {
   // BIG PLAY BUTTON
   const overlay = document.createElement("div");
 
-  overlay.innerHTML = "CLICK TO START MUSIC";
+  overlay.innerHTML = "Click to enter!";
 
   overlay.style.position = "fixed";
   overlay.style.inset = "0";
