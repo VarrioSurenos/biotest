@@ -693,7 +693,7 @@ function initMusicPlayer(musicConfig) {
   audio.loop = false;
   audio.controls = false;
 
-  let currentTrack = 0;
+  let currentTrack = Math.floor(Math.random() * tracks.length);
   const tracks = musicConfig.tracks.filter(Boolean);
 
   function playTrack(index) {
