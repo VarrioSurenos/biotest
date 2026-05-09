@@ -29,6 +29,12 @@ const CONFIG = {
   // ---------------------------------------------------------------------------
   "links": [
 {
+      "text": "Nexus",
+      "subtitle": "@LongLiveTerry",
+      "url": "https://www.nexusmods.com/profile/LongLiveTerry",
+      "icon": "assets/images/nexus.svg"
+    },
+    {
   "text": "Roadmap",
   "subtitle": "Upcoming Blood Trail Mods",
   "url": "roadmap.html",
