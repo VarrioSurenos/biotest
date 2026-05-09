@@ -35,6 +35,13 @@ const CONFIG = {
       "icon": "assets/images/nexus.svg"
     },
     {
+      "text": "Roadmap",
+      "subtitle": "Upcoming Blood Trail Mods",
+      "url": "roadmap.html",
+      "icon": "assets/images/nexus.svg"
+    },
+
+    {
       "text": "Discord",
       "subtitle": "Join the server",
       "url": "https://discord.gg/udh7VN79",
