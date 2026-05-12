@@ -455,10 +455,12 @@ function initializeCopyButton(buttonElement, textToCopy, originalSubtitle) {
           }, 2000); // Display time
         }, 300); // Transition time
       }
-    });
+  }
+};
+
+copyText();
   });
 }
-
 // --- STATUS INDICATOR AND SCHEDULING LOGIC ---
 
 // --- STATUS INDICATOR AND SCHEDULING LOGIC ---
