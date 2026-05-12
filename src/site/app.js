@@ -760,9 +760,9 @@ function initMusicPlayer(musicConfig) {
 
   player.style.position = "relative";
   player.style.width = "100%";
-  player.style.marginTop = "20px";
-  player.style.padding = "16px";
-  player.style.borderRadius = "16px";
+  player.style.marginTop = "16px";
+  player.style.marginLeft = "auto";
+  player.style.marginRight = "auto";
   player.style.background = "rgba(15,15,25,.85)";
   player.style.backdropFilter = "blur(12px)";
   player.style.border = "1px solid rgba(255,255,255,.08)";
@@ -835,13 +835,10 @@ function initMusicPlayer(musicConfig) {
   player.appendChild(songName);
   player.appendChild(controls);
 
-const footer = document.getElementById("footerContent");
+const linksContainer = document.getElementById("linksContainer");
 
-if (footer) {
-  footer.parentNode.insertBefore(
-    player,
-    footer
-  );
+if (linksContainer) {
+  linksContainer.appendChild(player);
 }
   // CLICK TO ENTER
   const overlay = document.createElement("div");
