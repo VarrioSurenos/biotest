@@ -758,20 +758,24 @@ function initMusicPlayer(musicConfig) {
   // PLAYER UI
   const player = document.createElement("div");
 
-  player.style.position = "relative";
-  player.style.width = "100%";
-  player.style.marginTop = "16px";
-  player.style.marginLeft = "auto";
-  player.style.marginRight = "auto";
-  player.style.background = "rgba(15,15,25,.85)";
-  player.style.backdropFilter = "blur(12px)";
-  player.style.border = "1px solid rgba(255,255,255,.08)";
-  player.style.color = "white";
-  player.style.fontFamily = "Inter, sans-serif";
-  player.style.pointerEvents = "auto";
-  player.style.boxSizing = "border-box";
-  player.style.position = "relative";
-  player.style.zIndex = "1";
+player.style.position = "relative";
+player.style.width = "100%";
+player.style.maxWidth = "100%";
+
+player.style.padding = "18px";
+player.style.marginTop = "18px";
+
+player.style.borderRadius = "18px";
+
+player.style.background = "rgba(15,15,25,.55)";
+player.style.backdropFilter = "blur(12px)";
+
+player.style.border = "1px solid rgba(255,255,255,.08)";
+
+player.style.color = "white";
+player.style.fontFamily = "Inter, sans-serif";
+
+player.style.boxSizing = "border-box";
 
   const songName = document.createElement("div");
 
