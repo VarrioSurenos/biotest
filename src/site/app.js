@@ -393,7 +393,71 @@ function getIconHtml(iconStr) {
 }
 
 // Generic Copy Logic
-function initializeCopyButton(buttonElement, textToCopy, originalSubtitle)
+function initializeCopyButton(buttonElement, textToCopy, originalSubtitle) {
+  if (!buttonElement) return;
+  const subtitleElement = buttonElement.querySelector('.button-subtitle');
+
+  buttonElement.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Prevent clicking while animating
+    if (buttonElement.classList.contains('animating')) return;
+
+    const copyText = async () => {
+  try {
+    await navigator.clipboard.writeText(textToCopy);
+  } catch {
+    const textArea = document.createElement('textarea');
+
+    textArea.value = textToCopy;
+
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+
+    document.body.appendChild(textArea);
+
+    textArea.focus();
+    textArea.select();
+
+    document.execCommand('copy');
+
+    document.body.removeChild(textArea);
+  }
+      if (subtitleElement) {
+        const oldText = subtitleElement.textContent;
+        buttonElement.classList.add('animating');
+
+        // 1. Fade Out
+        buttonElement.classList.add('fading-out');
+
+        setTimeout(() => {
+          // 2. Switch Content (Fast, while invisible)
+          subtitleElement.textContent = 'Copied!';
+          buttonElement.classList.add('show-copied-feedback');
+
+          // 3. Fade In
+          buttonElement.classList.remove('fading-out');
+
+          // 4. Wait, then Reverse
+          setTimeout(() => {
+            // 5. Fade Out again
+            buttonElement.classList.add('fading-out');
+
+            setTimeout(() => {
+              // 6. Revert Content
+              subtitleElement.textContent = originalSubtitle || oldText;
+              buttonElement.classList.remove('show-copied-feedback');
+
+              // 7. Fade In original
+              buttonElement.classList.remove('fading-out');
+              buttonElement.classList.remove('animating');
+            }, 300); // Transition time
+          }, 2000); // Display time
+        }, 300); // Transition time
+      }
+    });
+  });
+}
 
 // --- STATUS INDICATOR AND SCHEDULING LOGIC ---
 
