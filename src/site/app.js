@@ -403,26 +403,7 @@ function initializeCopyButton(buttonElement, textToCopy, originalSubtitle) {
     // Prevent clicking while animating
     if (buttonElement.classList.contains('animating')) return;
 
-    const copyText = async () => {
-  try {
-    await navigator.clipboard.writeText(textToCopy);
-  } catch {
-    const textArea = document.createElement('textarea');
-
-    textArea.value = textToCopy;
-
-    textArea.style.position = 'fixed';
-    textArea.style.opacity = '0';
-
-    document.body.appendChild(textArea);
-
-    textArea.focus();
-    textArea.select();
-
-    document.execCommand('copy');
-
-    document.body.removeChild(textArea);
-  }
+    navigator.clipboard.writeText(textToCopy).then(() => {
       if (subtitleElement) {
         const oldText = subtitleElement.textContent;
         buttonElement.classList.add('animating');
@@ -455,12 +436,10 @@ function initializeCopyButton(buttonElement, textToCopy, originalSubtitle) {
           }, 2000); // Display time
         }, 300); // Transition time
       }
-  }
-};
-
-copyText();
+    });
   });
 }
+
 // --- STATUS INDICATOR AND SCHEDULING LOGIC ---
 
 // --- STATUS INDICATOR AND SCHEDULING LOGIC ---
