@@ -768,6 +768,10 @@ function initMusicPlayer(musicConfig) {
   player.style.border = "1px solid rgba(255,255,255,.08)";
   player.style.color = "white";
   player.style.fontFamily = "Inter, sans-serif";
+  player.style.pointerEvents = "auto";
+  player.style.boxSizing = "border-box";
+  player.style.position = "relative";
+  player.style.zIndex = "1";
 
   const songName = document.createElement("div");
 
@@ -831,12 +835,12 @@ function initMusicPlayer(musicConfig) {
   player.appendChild(songName);
   player.appendChild(controls);
 
-const linksContainer = document.getElementById("linksContainer");
+const footer = document.getElementById("footerContent");
 
-if (linksContainer) {
-  linksContainer.parentNode.insertBefore(
+if (footer) {
+  footer.parentNode.insertBefore(
     player,
-    linksContainer.nextSibling
+    footer
   );
 }
   // CLICK TO ENTER
