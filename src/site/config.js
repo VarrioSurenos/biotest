@@ -94,7 +94,21 @@ const CONFIG = {
 
   "https://file.garden/agE3GkmcYA8xD0gx/Dominic%20Fike%20Baby%20Doll%20(Official%20Audio).mp3",
 
-  "https://file.garden/agE3GkmcYA8xD0gx/Oliver%20Anthony%20-%20Rich%20Men%20North%20Of%20Richmond%20(Lyrics).mp3"
+  "https://file.garden/agE3GkmcYA8xD0gx/Oliver%20Anthony%20-%20Rich%20Men%20North%20Of%20Richmond%20(Lyrics).mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/Wasted%20Talent.mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/Wasted%20Talent.mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/2K%20(SUPERMAX).mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/CAN'T%20STOP%20THA%20KAOS%20(feat.%20TINY).mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/Brought%20Up.mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/2KRAZY%20-%20ON%20THE%20RADAR.mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/TARGET%20ON%20MY%20HEAD.mp3"
 ]
   },
 
