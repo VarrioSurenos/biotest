@@ -800,6 +800,7 @@ player.style.boxSizing = "border-box";
   controls.style.display = "flex";
   controls.style.alignItems = "center";
   controls.style.gap = "10px";
+  controls.style.justifyContent = "center";
 
   const prevBtn = document.createElement("button");
   prevBtn.textContent = "⏮";
