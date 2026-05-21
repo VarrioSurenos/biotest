@@ -109,7 +109,11 @@ const CONFIG = {
 
   "https://file.garden/agE3GkmcYA8xD0gx/2KRAZY%20-%20ON%20THE%20RADAR.mp3",
 
-  "https://file.garden/agE3GkmcYA8xD0gx/TARGET%20ON%20MY%20HEAD.mp3"
+  "https://file.garden/agE3GkmcYA8xD0gx/TARGET%20ON%20MY%20HEAD.mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/The%20Rolling%20Stones%20-%20Paint%20It%2C%20Black%20(Lyrics).mp3",
+
+  "https://file.garden/agE3GkmcYA8xD0gx/The%20Animals%20-%20House%20of%20the%20Rising%20Sun%20(lyrics).mp3"
 ]
   },
 
